@@ -1,0 +1,452 @@
+
+    <!-- Para gerar o comeco bastar dar ! Tab Enter -->
+    <!DOCTYPE html>
+    <html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Calculadora</title>
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+        <style>
+            .calculadora{
+                margin-top: 40px;
+                border: solid 5px #42A610;
+                padding: 20px;
+                background-color: #fff;
+                border-radius: 10px;
+                box-shadow: 1px 1px 5px #000;
+            }
+
+            .btn {
+                width: 60px;
+                height: 50px;
+                margin: 5px;
+                background-color: #EEEEF0;
+                box-shadow: 1px 1px 1px #EEEEF0;
+                color: #000;
+            }
+
+            .clear{
+                width: 200px;
+            }
+            
+            .enter {
+                height: 110px;
+                font-size: 22px;
+                background-color: #42A610;
+                border: solid 1px #42A610;
+                box-shadow: 1px 1px 1px #EEEEF0;
+            }
+
+            .zero {
+                width: 130px;
+            }
+
+            .mensagem {
+                width: 132px;
+                height: 25px;
+            }
+
+            .resultado {
+                text-align: right;
+                font-size: 20px;
+                margin-top: 20px;
+                margin-bottom: 30px;
+                border: solid 1px #000;
+                box-shadow: 1px 1px 1px #EEEEF0;
+                background-color: #fff;
+
+            }
+
+            .funcoes {
+                width: 100px;
+                font-size: 15px;
+            }
+
+            .converte {
+                width: 45px;
+                font-size: 15px;
+            }
+
+        </style>
+    </head>
+    <body style="background: #000">
+        
+        <div class="container">
+            <div class="row">
+                <div class="col d-flex justify-content-center">
+                    <div class="calculadora">
+                        <input type="text" id="resultado" class="form-control resultado" placeholder="0" disabled="disabled"/>
+                        
+                        <div class="row">
+                            <p>_             ____________________________________________________________________________________________   _</p>
+                        </div>
+
+                        <div class="row">
+                            <button type="button" class="btn btn-dark btn-lg font-weight-bold funcoes" onclick="armazenarValorMatriz()" style="color: #9131e6">Armazena</button>
+                            <button type="button" class="btn btn-dark btn-lg font-weight-bold funcoes" onclick="armazenarNumero()" style="color: #1c81da">Armazena</button>
+                            <button type="button" class="btn btn-dark btn-lg font-weight-bold clear" onclick="calcular('operacao', 'C')" style="color: #D9433F">C</button>
+                            <button type="button" class="btn btn-dark btn-lg font-weight-bold clear" onclick="calcular('operacao', 'CE')" style="color: #000">CE</button>
+                        </div>
+
+                        <div class="row">
+                            <button type="button" class="btn btn-dark btn-lg font-weight-bold funcoes" onclick="limparMatriz()" style="color: #9131e6">Limpar</button>
+                            <button type="button" class="btn btn-dark btn-lg font-weight-bold funcoes" onclick="limparArmazenados()" style="color: #1c81da">Limpar</button>
+                            <button type="button" class="btn btn-dark btn-lg font-weight-bold" onclick="calcular('operacao', '&#40;')" style="color: #42A610">&#40;</button>
+                            <button type="button" class="btn btn-dark btn-lg font-weight-bold" onclick="calcular('operacao', '&#41;')" style="color: #42A610">&#41;</button>
+                            <button type="button" class="btn btn-dark btn-lg font-weight-bold" onclick="calcular('operacao', '%')" style="color: #42A610">%</button>
+                            <button type="button" class="btn btn-dark btn-lg font-weight-bold" onclick="calcular('operacao', '²')" style="color: #42A610">x²</button>
+                            <button type="button" class="btn btn-dark btn-lg font-weight-bold" onclick="calcular('operacao', '/')" style="color: #42A610">/</button>
+                            <button type="button" class="btn btn-dark btn-lg font-weight-bold" onclick="calcular('operacao', '*')" style="color: #42A610">*</button>
+                        </div>
+
+                        <div class="row">
+                            <button type="button" class="btn btn-dark btn-lg font-weight-bold funcoes" onclick="calcularSomaMatriz()" style="color: #9131e6">Soma</button>
+                            <button type="button" class="btn btn-dark btn-lg font-weight-bold funcoes" onclick="exibirMenor()" style="color: #1c81da">Menor</button>
+                            <button type="button" class="btn btn-dark btn-lg font-weight-bold" onclick="calcular('operacao', '&radic;')" style="color: #42A610">&radic;</button>
+                            <button type="button" class="btn btn-dark btn-lg font-weight-bold" onclick="calcular('operacao', 'pi')" style="color: #42A610">&pi;</button>
+                            <button type="button" class="btn btn-dark btn-lg font-weight-light" onclick="calcular('numero', '7')">7</button>
+                            <button type="button" class="btn btn-dark btn-lg font-weight-light" onclick="calcular('numero', '8')">8</button>
+                            <button type="button" class="btn btn-dark btn-lg font-weight-light" onclick="calcular('numero', '9')">9</button>
+                            <button type="button" class="btn btn-dark btn-lg font-weight-bold" onclick="calcular('operacao', '-')" style="color: #42A610">-</button>
+                        </div>
+                         
+                        <div class="row">
+                            <button type="button" class="btn btn-dark btn-lg font-weight-bold funcoes" onclick="calcularMediaMatriz()" style="color: #9131e6">Média</button>
+                            <button type="button" class="btn btn-dark btn-lg font-weight-bold funcoes" onclick="exibirMaiorNumero()" style="color: #1c81da">Maior</button>
+                            <button type="button" class="btn btn-dark btn-lg font-weight-bold" onclick="calcular('operacao', '!')" style="color: #42A610">!</button>
+                            <button type="button" class="btn btn-dark btn-lg font-weight-bold" onclick="calcular('operacao', 'e')" style="color: #42A610">e</button>
+                            <button type="button" class="btn btn-dark btn-lg font-weight-light" onclick="calcular('numero', '4')">4</button>
+                            <button type="button" class="btn btn-dark btn-lg font-weight-light" onclick="calcular('numero', '5')">5</button>
+                            <button type="button" class="btn btn-dark btn-lg font-weight-light" onclick="calcular('numero', '6')">6</button>
+                            <button type="button" class="btn btn-dark btn-lg font-weight-bold" onclick="calcular('operacao', '+')" style="color: #42A610">+</button>
+                        </div>
+                        
+                        <div class="row">
+                            <button type="button" class="btn btn-dark btn-lg font-weight-bold funcoes" onclick="calcular('operacao', 'Nota')" style="color: #D9433F">Nota</button>
+                            <button type="button" class="btn btn-dark btn-lg font-weight-bold funcoes" onclick="calcularMedia()" style="color: #1c81da">Média</button>
+                            <button type="button" class="btn btn-dark btn-lg font-weight-bold" onclick="calcular('funcao', 'tan')" style="color: #42A610">tan</button>
+                            <button type="button" class="btn btn-dark btn-lg font-weight-bold" onclick="calcular('operacao', '^')" style="color: #42A610">x<sup>y</sup></button>
+                            <button type="button" class="btn btn-dark btn-lg font-weight-light" onclick="calcular('numero', '1')">1</button>
+                            <button type="button" class="btn btn-dark btn-lg font-weight-light" onclick="calcular('numero', '2')">2</button>
+                            <button type="button" class="btn btn-dark btn-lg font-weight-light" onclick="calcular('numero', '3')">3</button>
+                            <button type="button" class="btn btn-dark btn-lg font-weight-bold enter" onclick="calcular('operacao', '=')" style="color: #fff">=</button>
+                        </div>
+                        
+                        <div class="row" style="margin-top: -60px">
+                            <button type="button" class="btn btn-dark btn-lg font-weight-bold converte d-flex justify-content-center align-items-center" onclick="converterParaBinario()" style="color: #e4d318">Bin</button>
+                            <button type="button" class="btn btn-dark btn-lg font-weight-bold converte d-flex justify-content-center align-items-center" onclick="converterParaDecimal()" style="color: #e4d318">Dec</button>
+                            <button type="button" class="btn btn-dark btn-lg font-weight-bold funcoes" onclick="calcularSoma()" style="color: #1c81da">Soma</button>
+                            <button type="button" class="btn btn-dark btn-lg font-weight-bold" onclick="calcular('funcao', 'sen')" style="color: #42A610">sen</button>
+                            <button type="button" class="btn btn-dark btn-lg font-weight-bold" onclick="calcular('funcao', 'cos')" style="color: #42A610">cos</button>
+                            <button type="button" class="btn btn-dark btn-lg zero font-weight-light" onclick="calcular('numero', '0')">0</button>
+                            <button type="button" class="btn btn-dark btn-lg font-weight-light" onclick="calcular('operacao', '.')">.</button>
+                        </div>
+
+                        <div class="row">
+                            <p>_             ____________________________________________________________________________________________   _</p>
+                        </div>
+                    
+                        <div class="row">
+                            <input type="text" id="letra" class="btn btn-dark font-weight-light form-control mensagem" style="background-color: #23262B; color: #6C757D;" placeholder="Digite uma letra" maxlength="1" oninput="limitarTamanhoInput(this)">
+                            <button type="button" class="btn btn-dark mensagem d-flex justify-content-center align-items-center" onclick="exibirMensagemVariavel(document.getElementById('letra').value)">Exibir Mensagem</button>
+
+                            <span style="margin-left: 45px;"></span>
+                            <span style="display: inline-block; width: 15px; height: 15px; margin-top: 10px; background-color: #9131e6"></span>
+                            <span style="margin-right: 20px; margin-top: 5px; margin-left: 5px;">Matriz</span>
+                            <span style="display: inline-block; width: 15px; height: 15px; margin-top: 10px; background-color: #1c81da;"></span>
+                            <span style="margin-right: 20px; margin-top: 5px; margin-left: 5px;">Vetor</span>
+                            
+                            <select onchange="exibirMensagemOpcao(this.value)" class="zero text-center ml-auto">
+                                <option value="0">Escolha</option>
+                                <option value="1">1. Opção 1</option>
+                                <option value="2">2. Opção 2</option>
+                                <option value="3">3. Opção 3</option>
+                                <option value="4">4. Opção 4</option>
+                                <option value="5">5. Opção 5</option>
+                            </select>                                
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            let numerosArmazenados = []; 
+
+            function armazenarNumero() {
+                let resultado = document.getElementById('resultado').value;
+                let numero = parseFloat(resultado);
+                numerosArmazenados.push(numero);
+                document.getElementById('resultado').value = '';
+            }
+
+            function limparArmazenados() {
+                numerosArmazenados = [];
+                document.getElementById('resultado').value = 'Armazenamento do vetor limpo.';
+            }
+
+            function exibirMaiorNumero() {
+                if (numerosArmazenados.length === 0) {
+                    document.getElementById('resultado').value = 'Nenhum número armazenado.';
+                } else {
+                    let maiorNumero = Math.max(...numerosArmazenados);
+                    document.getElementById('resultado').value = maiorNumero;
+                }
+            }
+
+            function exibirMenor() {
+                if (numerosArmazenados.length === 0) {
+                    document.getElementById('resultado').value = 'Nenhum número armazenado.';
+                } else {
+                    let menor = Math.min(...numerosArmazenados);
+                    document.getElementById('resultado').value = menor;
+                }
+            }
+
+            function calcularSoma() {
+                let total = numerosArmazenados.length;
+                let soma = 0;
+                if (total === 0) {
+                    document.getElementById('resultado').value = 'Nenhum número armazenado.';
+                } else {
+                    for (let i = 0; i < total; i++) {
+                        soma += numerosArmazenados[i];
+                    }
+                    document.getElementById('resultado').value = soma;
+                }
+            }
+
+            function calcularMedia() {
+                let total = numerosArmazenados.length;
+                let soma = 0;
+                if (total === 0) {
+                    document.getElementById('resultado').value = 'Nenhum número armazenado.';
+                } else {
+                    for (let i = 0; i < total; i++) {
+                        soma += numerosArmazenados[i];
+                    }
+                    let media = soma / total;
+                    document.getElementById('resultado').value = media;
+                }
+            }
+
+
+
+
+
+
+
+
+
+
+
+
+            
+
+            let elementosMatriz = [];
+            let resultadoMatriz = document.getElementById('resultadoMatriz');
+
+            function armazenarValorMatriz() {
+                let resultado = document.getElementById('resultado').value;
+                let numero = parseFloat(resultado);
+                elementosMatriz.push(numero);
+                document.getElementById('resultado').value = '';
+            }
+
+            function limparMatriz() {
+                elementosMatriz = [];
+                document.getElementById('resultado').value = 'Armazenamento da matriz limpo.';
+            }
+
+            function calcularSomaMatriz() {
+                if (elementosMatriz.length !== 4) {
+                    document.getElementById('resultado').value = 'A matriz não possui 4 elementos';
+                    return;
+                }
+                let soma = 0;
+                for (let i = 0; i < 4; i++) {
+                    soma += elementosMatriz[i];
+                }
+                document.getElementById('resultado').value = 'Soma: ' + soma;
+            }
+
+            function calcularMediaMatriz() {
+                if (elementosMatriz.length !== 4) {
+                    document.getElementById('resultado').value = 'A matriz não possui 4 elementos';
+                    return;
+                }
+
+                let soma = 0;
+                for (let i = 0; i < 4; i++) {
+                    soma += elementosMatriz[i];
+                }
+
+                let media = soma / 4;
+                document.getElementById('resultado').value = 'Média: ' + media;
+            }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            function exibirMensagemOpcao(opcao) {
+                let resultado = document.getElementById('resultado').value;
+
+                if (opcao === '1') {
+                    document.getElementById('resultado').value = "Opção 1 escolhida";
+                } else if (opcao === '2') {
+                    document.getElementById('resultado').value = "Opção 2 escolhida";
+                } else if (opcao === '3') {
+                    document.getElementById('resultado').value = "Opção 3 escolhida";
+                } else {
+                    document.getElementById('resultado').value = "Opção inválida";
+                }
+            }
+
+            function exibirMensagemVariavel(variavel) {
+                let mensagem = "";
+
+                if (variavel === "a") {
+                    mensagem = "A";
+                } else if (variavel === "b") {
+                    mensagem = "B";
+                } else {
+                    mensagem = "Outra letra";
+                }
+
+                document.getElementById('resultado').value = mensagem;
+            }
+
+            function limitarTamanhoInput(input) {
+                if (input.value.length > 1) {
+                    input.value = input.value.slice(0, 1);
+                }
+            }
+
+            function converterParaBinario() {
+                let resultado = document.getElementById('resultado').value;
+                let numero = parseInt(resultado);
+                let valorBinario = numero.toString(2);
+                document.getElementById('resultado').value = valorBinario;
+            }
+            function converterParaDecimal() {
+                let resultado = document.getElementById('resultado').value;
+                let numeroDecimal = parseInt(resultado, 2);
+                document.getElementById('resultado').value = numeroDecimal;
+            }
+
+
+            function calcularFatorial(numero) {
+                if (numero === 0 || numero === 1) {
+                    return 1;
+                }
+                return numero * calcularFatorial(numero - 1);
+            }
+            function calcular(tipo, valor){
+                if (tipo === 'operacao') {
+                    if (valor === 'C') {
+                        document.getElementById('resultado').value = '';
+                    }
+                    if (valor === 'CE') {
+                        let resultado = document.getElementById('resultado').value;
+                        document.getElementById('resultado').value = resultado.slice(0, -1);
+                    }
+                    if(valor === '^' || valor === '/' || valor === '+' || valor === '-' || valor === '*' || valor === '.' || valor === '(' || valor === ')') {
+                        document.getElementById('resultado').value += valor;
+                    }
+                    if (valor === '%') {
+                        let resultado = document.getElementById('resultado').value;
+                        let valorPorcentagem = eval(resultado)/100;
+                        document.getElementById('resultado').value = valorPorcentagem;
+                    }
+                    if (valor === '²') {
+                        let resultado = document.getElementById('resultado').value;
+                        let valorQuadrado = Math.pow(eval(resultado), 2);
+                        document.getElementById('resultado').value = valorQuadrado;
+                    }
+                    if (valor === '√') {
+                        let resultado = document.getElementById('resultado').value;
+                        let valorRaizQuadrada = Math.sqrt(eval(resultado));
+                        document.getElementById('resultado').value = valorRaizQuadrada;
+                    }
+                    if (valor === 'pi') {
+                        document.getElementById('resultado').value += (Math.PI);
+                    }
+                    if (valor === 'e') {
+                        document.getElementById('resultado').value += Math.E;
+                    }
+                    if (valor === '!') {
+                        let resultado = document.getElementById('resultado').value;
+                        let valorFatorial = calcularFatorial(eval(resultado));
+                        document.getElementById('resultado').value = valorFatorial;
+                    }
+                    if (valor === 'Nota'){
+                        let resultado = document.getElementById('resultado').value;
+                        if (resultado < 6) {
+                            document.getElementById('resultado').value = "Reprovado";
+                        } else if (resultado >= 6 && resultado < 8) {
+                            document.getElementById('resultado').value = "Aprovado";
+                        } else if (resultado >= 8) {
+                            document.getElementById('resultado').value = "Aprovado com louvor";
+                        }
+                    }
+                    if (valor === '=') {
+                        let resultado = document.getElementById('resultado').value;
+                        if (resultado.includes('^')) {
+                            let base = parseFloat(resultado.split('^')[0].trim());
+                            let expoente = parseFloat(resultado.split('^')[1].trim());
+                            let resultadoPotencia = Math.pow(base, expoente);
+                            document.getElementById('resultado').value = resultadoPotencia;
+                        } else {
+                            document.getElementById('resultado').value = eval(resultado);
+                        }
+                    }
+                } else if(tipo === 'numero') {
+                    document.getElementById('resultado').value += valor;
+                } else if (tipo == 'funcao') {
+                    if (valor === 'sen') {
+                        let resultado = document.getElementById('resultado').value;
+                        let numero = parseFloat(resultado);
+                        let resultadoSeno = Math.sin(numero * (Math.PI / 180)); // Converter para radianos
+                        document.getElementById('resultado').value = resultadoSeno;
+                    }
+                    if (valor === 'cos') {
+                        let resultado = document.getElementById('resultado').value;
+                        let numero = parseFloat(resultado);
+                        let resultadoCosseno = Math.cos(numero * (Math.PI / 180)); // Converter para radianos
+                        document.getElementById('resultado').value = resultadoCosseno;
+                    }
+                    if (valor === 'tan') {
+                        let resultado = document.getElementById('resultado').value;
+                        let numero = parseFloat(resultado);
+                        let resultadoTangente = Math.tan(numero * (Math.PI / 180)); // Converter para radianos
+                        document.getElementById('resultado').value = resultadoTangente;
+                    }
+                }
+            }
+        </script>
+
+    </body>
+    </html>

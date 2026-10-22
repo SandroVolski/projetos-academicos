@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      AGENDA DE CONTATOS
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-button (click)="logout()">
+    <ion-icon name="exit-outline"></ion-icon>
+  </ion-button>
+  <ion-list *ngFor="let contato of lista_contatos">
+    <ion-item (click)="editar(contato)">
+      <ion-avatar *ngIf="contato.downloadURL != null">
+        <img src="{{contato.downloadURL}}" />
+      </ion-avatar>
+      <ion-avatar *ngIf="contato.downloadURL == null">
+        <img src="assets/avatar.jpg" />
+      </ion-avatar>
+      <ion-label style="margin-left: 5%;">{{contato.nome}}</ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-fab horizontal="end" vertical="bottom">
+    <ion-fab-button (click)="irParaCadastrar()">
+      <ion-icon name="person-add-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

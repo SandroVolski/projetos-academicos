@@ -1,0 +1,189 @@
+.card {
+  width: 80%;
+  padding: 20px;
+  margin: 0 auto;
+  margin-top: 40px;
+  background-image: url('../weather/Fundo10.jpg');
+  background-size: cover; 
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  border: 3px solid #f8b421;
+}
+
+  .current-temp {
+    font-size: 50px;
+    font-weight: bold;
+    color: black;
+  }
+  
+  .weather-desc {
+    font-size: 15px;
+    color: #4a4a4a;
+  }
+  
+  .weather-stats {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  
+  .weather-stat {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff;
+    width: 25%;
+    padding: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+  }
+  
+  .weather-stat i {
+    font-size: 20px;
+    margin-right: 5px;
+  }
+  
+  .locatc {
+    margin-top: 20px;
+  }
+  
+  .location span {
+    margin-right: 10px;
+  }
+
+  .center-img {
+    display: block;
+    margin: 0 auto;
+    width: 50%;
+   }
+
+   .caixa-menor {
+        //display: flex;
+        margin-top: 10px;
+        align-items: center;
+    }   
+
+.centered-content {
+    text-align: center;
+   }
+
+   .img-maior {
+    width: 100px; 
+    height: 100px; 
+  }
+
+  .page-background {
+    --background: url('../weather/Wallpaper3.jpg') center top/cover no-repeat; 
+  }
+
+  .page-cima {
+    --background: #ffffff;
+  }
+
+   .center-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    margin-top: 20px;
+  }
+
+  .custom-button {
+    --background: #f8b421;
+    text-transform: uppercase;
+    color: #fff; 
+  }
+  
+
+  .custom-search {
+    border: 2px solid #f8b421;
+    border-radius: 20px;
+    background-color: transparent;
+    margin: 10px;
+  }
+  
+  .custom-input {
+    border: none;
+    background-color: transparent;
+    color: black;
+    
+  }
+  
+  .custom-button {
+    --background: #f8b421;
+    margin-right: 0px;
+  }
+  
+  .custom-icon {
+    color: white;
+    font-size: 24px;
+  }
+
+  .custom-header {
+    font-weight: bold; 
+    font-family: 'SuaFonteChamativa', sans-serif; 
+    -webkit-text-stroke: 1px black; 
+    color: #f8b421;
+  }
+
+.page-background-sunny {
+  background-image: url('../weather/Fundo10.jpg');
+}
+
+
+.page-background-rainy {
+  background-image: url('../weather/Chuva10.jpg');
+}
+
+
+.page-background-cloudy {
+  background-image: url('../weather/Nublado10.jpg');
+}
+
+.page-background-neve {
+  background-image: url('../weather/Neve10.jpg');
+}
+
+/*.custom-background {
+  background-size: cover;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  border: 3px solid #f8b421;
+  background-image: url('../weather/' + getBackgroundImage());
+}*/
+
+.background-image-sunny {
+  background-image: url("../weather/Fundo10.jpg");
+}
+
+.background-image-rainy {
+  background-image: url("../weather/Chuva10.jpg");
+}
+
+.background-image-cloudy {
+  background-image: url("../weather/Nublado10.jpg");
+}
+
+.background-image-snowy {
+  background-image: url("../weather/Neve10.jpg");
+}
+
+.logo {
+  position: absolute;
+  left: 0;
+  top: 2px;
+  height: 40px;
+  width: 40px;
+  background: url('../weather/logoApi.png') no-repeat;
+  background-size: cover;
+  border: none !important;; 
+}
+
+ion-toolbar.page-cima {
+  --background: transparent; /* Altera a cor de fundo para transparente */
+  --border-color: transparent; /* Define a cor da borda como transparente (opcional, dependendo do seu caso) */
+}
+
+ion-img.logo {
+  border: none; /* Remove a borda da logo */
+}
